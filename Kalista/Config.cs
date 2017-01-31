@@ -457,6 +457,8 @@ namespace Hellsing.Kalista
             private static readonly CheckBox _healthbar;
             private static readonly CheckBox _percent;
 
+            private static readonly CheckBox _jumpspots;
+
             public static bool DrawQ
             {
                 get { return _drawQ.CurrentValue; }
@@ -485,6 +487,10 @@ namespace Hellsing.Kalista
             {
                 get { return _percent.CurrentValue; }
             }
+            public static bool DrawJumpSpots
+            {
+                get { return _jumpspots.CurrentValue; }
+            }
 
             static Drawing()
             {
@@ -500,6 +506,10 @@ namespace Hellsing.Kalista
                 Menu.AddGroupLabel("Damage indicators (Rend - E)");
                 _healthbar = Menu.Add("healthbar", new CheckBox("Healthbar overlay"));
                 _percent = Menu.Add("percent", new CheckBox("Damage percent info"));
+
+                Menu.AddGroupLabel("Jump spots");
+                _jumpspots = Menu.Add("draw.jumpSpots", new CheckBox("Draw jump spots"));
+
             }
 
             public static void Initialize()

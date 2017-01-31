@@ -5,7 +5,7 @@ using EloBuddy;
 using EloBuddy.SDK;
 using SharpDX;
 
-namespace ScaryKalista
+namespace Hellsing.Kalista
 {
     class WallJump
     {
@@ -26,13 +26,13 @@ namespace ScaryKalista
         public static void JumpWall()
         {
             var spot = GetJumpSpot();
-            if (Q.IsReady()
+            if (SpellManager.Q.IsReady()
                 && spot != null
                 && Environment.TickCount - _lastMoveClick > 100)
             {
                 if (Player.Instance.Distance(spot[0]) <= 4)
                 {
-                    Spells.Q.Cast(spot[1]);
+                    SpellManager.Q.Cast(spot[1]);
                     Player.IssueOrder(GameObjectOrder.MoveTo, spot[1]);
                     _lastMoveClick = Environment.TickCount;
                     _jumped = true;
