@@ -26,6 +26,7 @@ namespace Hellsing.Kalista
         public static void Initialize()
         {
             // Listen to related events
+
             Game.OnTick += OnTick;
             Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
         }
