@@ -18,7 +18,7 @@ namespace Hellsing.Kalista
                 new Harass(),
                 new LaneClear(),
                 new JungleClear(),
-                //new Flee()
+                new Flee()
             };
 
             /* // Can't use my preferred version cuz Activator.CreateInstance is blocked -.-

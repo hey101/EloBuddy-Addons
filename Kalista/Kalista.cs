@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
@@ -42,6 +41,9 @@ namespace Hellsing.Kalista
             DamageIndicator.Initialize(Damages.GetRendDamage);
             DamageIndicator.DrawingColor = System.Drawing.Color.Goldenrod;
 
+            //Initialize Jump Spot
+            WallJump.InitSpots();
+
             // Listen to some required events
             Drawing.OnDraw += OnDraw;
             Spellbook.OnCastSpell += OnCastSpell;
@@ -82,6 +84,17 @@ namespace Hellsing.Kalista
 
         private static void OnDraw(EventArgs args)
         {
+            // Jump Spots
+            if (Config.Drawing.JumpSpots)
+            {
+                //Chat.Print(WallJump.JumpSpots.Count.ToString());
+                foreach (var spot in WallJump.JumpSpots.Where(s => Player.Instance.Distance(s[0]) <= 2000))
+                {
+                    //Chat.Print("test");
+
+                    Circle.Draw(Color.DarkGray, 30f, spot[0]);
+                }
+            }
             // All circles
             foreach (var spell in SpellManager.AllSpells)
             {
@@ -124,14 +137,7 @@ namespace Hellsing.Kalista
             DamageIndicator.HealthbarEnabled = Config.Drawing.IndicatorHealthbar;
             DamageIndicator.PercentEnabled = Config.Drawing.IndicatorPercent;
 
-            // Jump Spots
-            if (Config.Drawing.DrawJumpSpots)
-            {
-                foreach (var spot in WallJump.JumpSpots.Where(s => Player.Instance.Distance(s[0]) <= 2000))
-                {
-                    Circle.Draw(SharpDX.Color.DarkGray, 30f, spot[0]);
-                }
-            }
+
         }
 
         private static void OnCastSpell(Spellbook sender, SpellbookCastSpellEventArgs args)

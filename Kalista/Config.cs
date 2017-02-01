@@ -250,8 +250,8 @@ namespace Hellsing.Kalista
                 {
                     Menu.AddGroupLabel("Flee");
 
-                    _walljump = Menu.Add("fleeWalljump", new CheckBox("Use WallJumps"));
-                    _autoAttack = Menu.Add("fleeAutoattack", new CheckBox("Use AutoAttacks"));
+                    _walljump = Menu.Add("walljump", new CheckBox("Use WallJumps"));
+                    _autoAttack = Menu.Add("autoAttack", new CheckBox("Use AutoAttacks"));
                 }
 
                 public static void Initialize()
@@ -487,7 +487,7 @@ namespace Hellsing.Kalista
             {
                 get { return _percent.CurrentValue; }
             }
-            public static bool DrawJumpSpots
+            public static bool JumpSpots
             {
                 get { return _jumpspots.CurrentValue; }
             }
@@ -508,7 +508,7 @@ namespace Hellsing.Kalista
                 _percent = Menu.Add("percent", new CheckBox("Damage percent info"));
 
                 Menu.AddGroupLabel("Jump spots");
-                _jumpspots = Menu.Add("draw.jumpSpots", new CheckBox("Draw jump spots"));
+                _jumpspots = Menu.Add("jumpspots", new CheckBox("Draw jump spots"));
 
             }
 
